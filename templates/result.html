@@ -1,0 +1,37 @@
+<style>
+    .result-container {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .result-container > div {
+        text-align: center;
+        margin: 10px;
+    }
+</style>
+
+<div class="result-container">
+    {% if result %}
+        <div>
+            <img src="{{ url_for('static', filename='images/' + result['user'] + '.png') }}" alt="{{ result['user'] }}">
+            <p>Votre choix : {{ result['user'] }}</p>
+        </div>
+        <div>
+            <img src="{{ url_for('static', filename='images/' + result['computer'] + '.png') }}" alt="{{ result['computer'] }}">
+            <p>Choix de l'ordinateur : {{ result['computer'] }}</p>
+        </div>
+</div>
+<div>
+    <p>Résultat : {{ result['result'] }}</p>
+    <p>Score - Joueur: {{ result['score']['player'] }} | Ordinateur: {{ result['score']['computer'] }}</p>
+</div>
+{% else %}
+<p>Aucun résultat disponible.</p>
+{% endif %}
+
+
+<form action="/" method="get">
+    <input type="submit" value="Rejouer">
+</form>

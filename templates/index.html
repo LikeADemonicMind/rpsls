@@ -1,0 +1,28 @@
+{% if score %}
+<p>Score - Joueur: {{ score['player'] }} | Ordinateur: {{ score['computer'] }}</p>
+{% else %}
+    <p>Aucun résultat disponible.</p>
+{% endif %}
+<form action="/play" method="post">
+    <label>Choisissez : </label>
+    <div class="image-buttons">
+        <button type="submit" name="choice" value="pierre">
+            <img src="{{ url_for('static', filename='images/pierre.png') }}" alt="Pierre">
+        </button>
+        <button type="submit" name="choice" value="papier">
+            <img src="{{ url_for('static', filename='images/papier.png') }}" alt="Papier">
+        </button>
+        <button type="submit" name="choice" value="ciseaux">
+            <img src="{{ url_for('static', filename='images/ciseaux.png') }}" alt="Ciseaux">
+        </button>
+        <button type="submit" name="choice" value="lezard">
+            <img src="{{ url_for('static', filename='images/lezard.png') }}" alt="Lézard">
+        </button>
+        <button type="submit" name="choice" value="spock">
+            <img src="{{ url_for('static', filename='images/spock.png') }}" alt="Spock">
+        </button>
+    </div>
+</form>
+
+
+
