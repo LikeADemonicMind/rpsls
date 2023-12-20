@@ -10,28 +10,33 @@
         text-align: center;
         margin: 10px;
     }
+
+    .result-info {
+        text-align: center;
+        margin-top: 20px; /* Ajoute une marge supplémentaire pour l'espace entre les sections */
+    }
 </style>
 
 <div class="result-container">
     {% if result %}
-        <div>
-            <img src="{{ url_for('static', filename='images/' + result['user'] + '.png') }}" alt="{{ result['user'] }}">
-            <p>Votre choix : {{ result['user'] }}</p>
-        </div>
-        <div>
-            <img src="{{ url_for('static', filename='images/' + result['computer'] + '.png') }}" alt="{{ result['computer'] }}">
-            <p>Choix de l'ordinateur : {{ result['computer'] }}</p>
-        </div>
+    <div>
+        <img src="{{ url_for('static', filename='images/' + result['user'] + '.png') }}" alt="{{ result['user'] }}">
+        <p>Votre choix : {{ result['user'] }}</p>
+    </div>
+    <div>
+        <img src="{{ url_for('static', filename='images/' + result['computer'] + '.png') }}" alt="{{ result['computer'] }}">
+        <p>Choix de l'ordinateur : {{ result['computer'] }}</p>
+    </div>
 </div>
-<div>
+<div class="result-info">
     <p>Résultat : {{ result['result'] }}</p>
     <p>Score - Joueur: {{ result['score']['player'] }} | Ordinateur: {{ result['score']['computer'] }}</p>
-</div>
+
 {% else %}
 <p>Aucun résultat disponible.</p>
 {% endif %}
 
-
 <form action="/" method="get">
     <input type="submit" value="Rejouer">
 </form>
+</div>
