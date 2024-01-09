@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import random
+import subprocess
+import pygetwindow as gw
 
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
@@ -71,6 +73,11 @@ def play():
 def replay():
     return redirect(url_for('index'))
 
+@app.route('/camera_page')
+def camera_page():
+    # Exécutez le script ppcls.py
+    subprocess.run(['python', 'ppcls.py'])
+    return render_template('camera.html')
 
 
 if __name__ == '__main__':
