@@ -56,7 +56,7 @@ def index():
         if 'score' not in session:
             session['score'] = {'player': 0, 'computer': 0}
 
-    return render_template('index.html', score=session['score'])
+    return render_template('index.html', score=session.get('score', {'player': 0, 'computer': 0}))
 
 @app.route('/play', methods=['POST'])
 def play():
